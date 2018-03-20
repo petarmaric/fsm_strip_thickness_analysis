@@ -2,13 +2,13 @@ from setuptools import setup, find_packages
 
 
 setup(
-    name='fsm_strip_length_analysis',
+    name='fsm_strip_thickness_analysis',
     version='1.0.0',
-    url='https://bitbucket.org/petar/fsm_strip_length_analysis',
+    url='https://bitbucket.org/petar/fsm_strip_thickness_analysis',
     license='BSD',
     author='Petar Maric',
     author_email='petarmaric@uns.ac.rs',
-    description='Console app and Python API for strip length-dependent '\
+    description='Console app and Python API for strip thickness-dependent '\
                 'visualization and modal analysis of the parametric model of '\
                 'buckling and free vibration in prismatic shell structures, '\
                 'as computed by the fsm_eigenvalue project.',
@@ -25,9 +25,9 @@ setup(
         'Topic :: Scientific/Engineering :: Physics',
     ],
     platforms='any',
-    py_modules=['fsm_strip_length_analysis'],
+    py_modules=['fsm_strip_thickness_analysis'],
     entry_points={
-        'console_scripts': ['fsm_strip_length_analysis=fsm_strip_length_analysis:main'],
+        'console_scripts': ['fsm_strip_thickness_analysis=fsm_strip_thickness_analysis:main'],
     },
     install_requires=open('requirements.txt').read().splitlines(),
 )

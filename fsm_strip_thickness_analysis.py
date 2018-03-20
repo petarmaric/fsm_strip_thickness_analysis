@@ -163,7 +163,7 @@ def configure_matplotlib():
 def main():
     # Setup command line option parser
     parser = argparse.ArgumentParser(
-        description='Strip length-dependent visualization and modal analysis '\
+        description='Strip thickness-dependent visualization and modal analysis '\
                     'of the parametric model of buckling and free vibration '\
                     'in prismatic shell structures, as computed by the '\
                     'fsm_eigenvalue project.',

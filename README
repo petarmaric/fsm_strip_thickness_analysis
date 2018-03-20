@@ -1,7 +1,7 @@
 About
 =====
 
-Console app and Python API for strip length-dependent visualization and modal
+Console app and Python API for strip thickness-dependent visualization and modal
 analysis of the parametric model of buckling and free vibration in prismatic
 shell structures, as computed by the `fsm_eigenvalue project`_.
 
@@ -20,20 +20,20 @@ References
 Installation
 ============
 
-To install fsm_strip_length_analysis run::
+To install fsm_strip_thickness_analysis run::
 
-    $ pip install fsm_strip_length_analysis
+    $ pip install fsm_strip_thickness_analysis
 
 Console app usage
 =================
 
 Quick start::
 
-    $ fsm_strip_length_analysis <filename>
+    $ fsm_strip_thickness_analysis <filename>
 
 Show help::
 
-    $ fsm_strip_length_analysis --help
+    $ fsm_strip_thickness_analysis --help
 
 Python API usage
 ================
@@ -43,7 +43,7 @@ Quick start::
     >>> import logging
     >>> logging.basicConfig(level=logging.DEBUG)
 
-    >>> from fsm_strip_length_analysis import analyze_model, configure_matplotlib
+    >>> from fsm_strip_thickness_analysis import analyze_model, configure_matplotlib
 
     >>> model_file = 'examples/barbero-viscoelastic.hdf5'
     >>> report_file = model_file.replace('.hdf5', '.pdf')
@@ -59,6 +59,6 @@ If you find any bugs, or wish to propose new features `please let us know`_.
 If you'd like to contribute, simply fork `the repository`_, commit your changes
 and send a pull request. Make sure you add yourself to `AUTHORS`_.
 
-.. _`please let us know`: https://bitbucket.org/petar/fsm_strip_length_analysis/issues/new
-.. _`the repository`: http://bitbucket.org/petar/fsm_strip_length_analysis
-.. _`AUTHORS`: https://bitbucket.org/petar/fsm_strip_length_analysis/src/default/AUTHORS
+.. _`please let us know`: https://bitbucket.org/petar/fsm_strip_thickness_analysis/issues/new
+.. _`the repository`: http://bitbucket.org/petar/fsm_strip_thickness_analysis
+.. _`AUTHORS`: https://bitbucket.org/petar/fsm_strip_thickness_analysis/src/default/AUTHORS
