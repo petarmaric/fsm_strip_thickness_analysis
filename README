@@ -49,7 +49,7 @@ Quick start::
     >>> report_file = model_file.replace('.hdf5', '.pdf')
 
     >>> configure_matplotlib()
-    >>> analyze_model(model_file, report_file, t_b_fix=6.25, add_automatic_markers=True)
+    >>> analyze_model(model_file, report_file, a_fix=1000.0, add_automatic_markers=True)
 
 Contribute
 ==========
