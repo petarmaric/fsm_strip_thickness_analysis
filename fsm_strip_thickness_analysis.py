@@ -17,7 +17,7 @@ __version__ = '1.0.0'
 
 FIGURE_SIZE = (11.7, 8.3) # In inches
 
-DEFAULT_T_B = 6.35
+DEFAULT_A = 1000.0
 
 SUBPLOTS_SPEC = [
     {
@@ -89,10 +89,10 @@ def plot_modal_composite(modal_composites, column_units, column_descriptions, ma
         unit = column_units[column_name]
         return description if not unit else "%s [%s]" % (description, unit)
 
-    t_b = modal_composites['t_b'][0]
-    plt.suptitle("modal composites, strip thickness %f [mm]" % t_b)
+    a = modal_composites['a'][0]
+    plt.suptitle("modal composites, strip length %f [mm]" % a)
 
-    x = modal_composites['a']
+    x = modal_composites['t_b']
     min_x = np.min(x)
     max_x = np.max(x)
 
@@ -111,7 +111,7 @@ def plot_modal_composite(modal_composites, column_units, column_descriptions, ma
 
         plt.xlim(min_x, max_x)
 
-        plt.xlabel(_get_column_title('a'))
+        plt.xlabel(_get_column_title('t_b'))
         plt.ylabel(spec['ylabel'] or _get_column_title(main_key))
         plt.legend()
 
@@ -123,13 +123,13 @@ def dynamic_load_modal_composites(model_file, search_buffer=10**-10, **filters):
     if modal_composites.size != 0:
         return modal_composites, column_units, column_descriptions
 
-    t_b = filters.pop('t_b_fix')
+    a = filters.pop('a_fix')
     filters.update({
-        't_b_min': t_b - search_buffer,
-        't_b_max': t_b + search_buffer,
+        'a_min': a - search_buffer,
+        'a_max': a + search_buffer,
     })
 
-    logging.warn("Could not find the exact value of t_b requested, expanding search condition to %(t_b_min)s <= t_b <= %(t_b_max)s", filters)
+    logging.warn("Could not find the exact value of a requested, expanding search condition to %(a_min)s <= a <= %(a_max)s", filters)
     return load_modal_composites(model_file, **filters)
 
 
@@ -179,30 +179,30 @@ def main():
         help="Store the analysis report to the selected FILENAME, uses '<model_file>.pdf' by default"
     )
     parser.add_argument(
-        '--a-min',
+        '--t_b-min',
         metavar='VAL',
         type=float,
-        help='If specified, clip the minimum strip length [mm] to VAL'
+        help='If specified, clip the minimum base strip thickness [mm] to VAL'
     )
     parser.add_argument(
-        '--a-max',
+        '--t_b-max',
         metavar='VAL',
         type=float,
-        help='If specified, clip the maximum strip length [mm] to VAL'
+        help='If specified, clip the maximum base strip thickness [mm] to VAL'
     )
     parser.add_argument(
-        '--t_b',
+        '--a',
         metavar='VAL',
         type=float,
-        default=DEFAULT_T_B,
-        help="Plot figures by fixing the selected base strip thickness [mm] to VAL, %f by default" % DEFAULT_T_B
+        default=DEFAULT_A,
+        help="Plot figures by fixing the selected strip length [mm] to VAL, %f by default" % DEFAULT_A
     )
     parser.add_argument(
         '--markers',
         metavar='POS',
         nargs='*',
         type=float,
-        help='Plot marker(s) at specified strip length(s) [mm]'
+        help='Plot marker(s) at specified strip thickness(es) [mm]'
     )
     parser.add_argument(
         '--add-automatic-markers',
@@ -244,9 +244,9 @@ def main():
     analyze_model(
         model_file=args.model_file,
         report_file=args.report_file,
-        a_min=args.a_min,
-        a_max=args.a_max,
-        t_b_fix=args.t_b,
+        t_b_min=args.t_b_min,
+        t_b_max=args.t_b_max,
+        a_fix=args.a,
         markers=args.markers,
         add_automatic_markers=args.add_automatic_markers,
     )
